@@ -156,8 +156,8 @@ app.post("/register", async (req, res) => {
 app.get("/dashboard", auth, (req, res) => {
   res.status(200).render("dashboard", { user: req.user });
 });
-app.get("/504", (req, res) => {
-  res.status(504).render("504");
+app.get("/error", (req, res) => {
+  res.status(504).render("error", { message: "504 Gateway Timeout" });
 });
 
 // Start server
