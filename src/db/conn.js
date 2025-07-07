@@ -1,10 +1,18 @@
+// Load environment variables
+require('dotenv').config();
+
+// Import mongoose
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/admin_Panel", process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    //useCreateIndex: true
+
+// Use local MongoDB as fallback
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/admin_Panel";
+
+// Connect to MongoDB
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }).then(() => {
-    console.log("Connected to MongoDB successfully");
+  console.log("✅ Connected to MongoDB successfully");
 }).catch((error) => {
-    console.log("Error connecting to MongoDB:", error);
+  console.error("❌ Error connecting to MongoDB:", error);
 });
