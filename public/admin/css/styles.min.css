@@ -15647,7 +15647,7 @@ textarea.form-control-lg {
 .left-sidebar .scroll-sidebar {
   overflow-y: auto;
   padding: 0 24px;
-  height: calc(100vh - 310px);
+  height: 550px;
   border-radius: 7px;
 }
 .left-sidebar .scroll-sidebar .simplebar-track.simplebar-horizontal {
@@ -15818,7 +15818,7 @@ textarea.form-control-lg {
   width: 100%;
   background: var(--bs-body-bg);
   padding: 0 10px;
-  top: 65px;
+  top: 0px;
 }
 @media (max-width: 991.98px) {
   .app-header {
@@ -15908,11 +15908,12 @@ body {
   min-height: calc(100vh - 110px);
 }
 .body-wrapper .container-fluid, .body-wrapper .container-sm, .body-wrapper .container-md, .body-wrapper .container-lg, .body-wrapper .container-xl, .body-wrapper .container-xxl {
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: 0 auto;
   padding: 24px;
   transition: 0.2s ease-in;
-  padding-top: 180px;
+  padding-top: 2.5%;
+  padding-left: 21%;
 }
 @media (max-width: 991.98px) {
   .body-wrapper .container-fluid, .body-wrapper .container-sm, .body-wrapper .container-md, .body-wrapper .container-lg, .body-wrapper .container-xl, .body-wrapper .container-xxl {
@@ -15967,7 +15968,7 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   }
   .left-sidebar .scroll-sidebar {
-    height: calc(100vh - 240px);
+    height: 550px;
   }
 }
 * {

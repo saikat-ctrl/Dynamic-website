@@ -13,6 +13,7 @@ const logout = require('./middleware/logout');
 const app = express();
 require('./db/conn'); // MongoDB connection
 const Register = require('./models/registers');
+const { log } = require('console');
 
 const port = process.env.PORT || 3000;
 const secretKey = process.env.SECRET_KEY;
@@ -33,6 +34,17 @@ app.use(express.static(staticPath));
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
+hbs.registerHelper('eq', function (a, b) {
+  return a === b;
+});
+// app.use((req, res, next) => {
+//   res.locals.currentPath = req.path;
+//   next();
+// });
+// Register helper to mark active nav link
+hbs.registerHelper("isActiveRoute", function (currentPath, routePath) {
+  return currentPath === routePath ? "active" : "";
+});
 
 // Routes
 app.get("/", (req, res) => {
@@ -153,13 +165,26 @@ app.post("/register", async (req, res) => {
     res.status(500).redirect('/register?message=Server error occurred');
   }
 });
-app.get("/dashboard", auth, (req, res) => {
+app.get("/dashboard", auth, async (req, res) => {
+  const userData = await Register.findById(req.user._id);
   res.status(200).render("dashboard", { user: req.user });
 });
-app.get("/error", (req, res) => {
-  res.status(504).render("error", { message: "504 Gateway Timeout" });
+app.get("/servererror", (req, res) => {
+  res.status(504).render("servererror", { message: "504 Gateway Timeout" });
 });
 
+app.get("/about", (req, res) => {
+  res.render("aboutus");
+});
+app.get("/items", (req, res) => {
+  res.render("items");
+});
+app.get("/services", (req, res) => {
+  res.render("services");
+});
+app.get("/contact", (req, res) => {
+  res.render("contactus");
+});
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
