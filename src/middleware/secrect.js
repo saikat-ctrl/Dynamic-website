@@ -16,13 +16,16 @@ const secrect = async (req, res, next) => {
       return res.status(401).render("error", { message: "Unauthorized: User not found." });
     }
 
-    if (user.owner !== "true") {
-      return res.status(403).render("error", { message: "Access denied: Only owners can access this section." });
+    // Check if the user is an owner
+    if (user.owner !== true) {      
+      return res.status(403).render("error", { message: "Access denied: Only owner can access this section." });
     }
 
+    // Proceed if everything is valid
     req.token = token;
     req.user = user;
     next();
+
   } catch (error) {
     console.error("Auth error:", error);
     res.status(401).render("error", { message: "Unauthorized: Invalid token." });

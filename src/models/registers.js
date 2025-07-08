@@ -26,6 +26,10 @@ const registerSchema = new mongoose.Schema({
         default: 'user',
         enum: ['user', 'admin']
     },
+    owner: {
+        type: Boolean,
+        default: false
+    },
     c_date: {
         type: Date,
         default: Date.now

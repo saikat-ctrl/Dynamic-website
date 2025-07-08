@@ -59,7 +59,7 @@ app.get("/secrect", secrect, (req, res) => {
   // console.log(`cookies ${req.cookies.jwt}`);
   res.render("secrect");
 });
-app.get("/admin/dashboard",auth, (req, res) => {
+app.get("/admin/dashboard", auth, (req, res) => {
   res.status(200).render("admin_dashboard", { user: req.user });
 });
 app.post("/auth/login", async (req, res) => {
@@ -80,18 +80,18 @@ app.post("/auth/login", async (req, res) => {
     const token = await user.generateAuthToken();
 
     res.cookie("jwt", token, {
-      expires: new Date(Date.now() + 3600000), // 1 hour
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       httpOnly: true,
       // secure: process.env.NODE_ENV === 'production',
       // sameSite: 'Strict'
-    }); 
+    });
     user.l_date = new Date(); // Update last login date
     await user.save();
-    if(user.type === 'admin') {
-      return res.status(201).redirect("/admin/dashboard");    
+    if (user.type === 'admin') {
+      return res.status(201).redirect("/admin/dashboard");
     } else {
       res.status(201).redirect("/dashboard");
-    }    
+    }
   } catch (error) {
     res.status(500).send("Error during login: " + error.message);
   }
@@ -152,7 +152,7 @@ app.post("/register", async (req, res) => {
     const token = await register.generateAuthToken(); // Save and return JWT
 
     res.cookie("jwt", token, {
-      expires: new Date(Date.now() + 3600000), // 1 hour
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'Strict'
@@ -172,7 +172,6 @@ app.get("/dashboard", auth, async (req, res) => {
 app.get("/servererror", (req, res) => {
   res.status(504).render("servererror", { message: "504 Gateway Timeout" });
 });
-
 app.get("/about", (req, res) => {
   res.render("aboutus");
 });
@@ -185,6 +184,11 @@ app.get("/services", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contactus");
 });
+//page settings
+app.get("/homepage", (req, res) => {
+  res.status(404).render("homepage", { error: "Page not found" });
+});
+//page settings
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
