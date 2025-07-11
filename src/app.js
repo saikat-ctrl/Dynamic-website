@@ -13,6 +13,7 @@ const logout = require('./middleware/logout');
 const app = express();
 require('./db/conn'); // MongoDB connection
 const Register = require('./models/registers');
+const Page = require('./models/pages');
 const { log } = require('console');
 
 const port = process.env.PORT || 3000;
@@ -187,6 +188,9 @@ app.get("/contact", (req, res) => {
 //page settings
 app.get("/homepage", (req, res) => {
   res.status(404).render("homepage", { error: "Page not found" });
+});
+app.get("/abouts", (req, res) => {
+  res.status(404).render("about", { error: "Page not found" });
 });
 //page settings
 // Start server

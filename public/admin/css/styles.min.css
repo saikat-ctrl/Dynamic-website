@@ -15822,7 +15822,7 @@ textarea.form-control-lg {
 }
 @media (max-width: 991.98px) {
   .app-header {
-    top: 131px;
+    /* top: 131px; */
   }
 }
 .app-header .container-fluid, .app-header .container-sm, .app-header .container-md, .app-header .container-lg, .app-header .container-xl, .app-header .container-xxl {
@@ -15913,14 +15913,21 @@ body {
   padding: 24px;
   transition: 0.2s ease-in;
   padding-top: 2.5%;
-  padding-left: 21%;
+  /* padding-left: 21%; */
 }
 @media (max-width: 991.98px) {
   .body-wrapper .container-fluid, .body-wrapper .container-sm, .body-wrapper .container-md, .body-wrapper .container-lg, .body-wrapper .container-xl, .body-wrapper .container-xxl {
     padding-top: 230px;
   }
 }
-
+.fix{
+  margin-top: 65px;
+}
+@media (max-width: 767.98px) {
+  #fixx .fixx .fix {
+    margin-top: -136px;
+  }
+}
 @media (max-width: 767.98px) {
   .body-wrapper > .container-fluid, .body-wrapper > .container-sm, .body-wrapper > .container-md, .body-wrapper > .container-lg, .body-wrapper > .container-xl, .body-wrapper > .container-xxl {
     padding: 30px 20px;
@@ -15932,11 +15939,11 @@ body {
 
 #main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .left-sidebar {
   position: fixed;
-  top: 65px;
+  /* top: 65px; */
 }
 @media (max-width: 991.98px) {
   #main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .left-sidebar {
-    top: 131px;
+    /* top: 131px; */
   }
 }
 #main-wrapper[data-layout=vertical][data-header-position=fixed] .app-header {

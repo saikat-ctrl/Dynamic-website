@@ -1,0 +1,50 @@
+{{>header}}
+<!-- Main Content -->
+<div class="body-wrapper-inner" id="fixx">
+    <div class="container-fluid fixx">
+        <div class="card fix">
+            <div class="card-body" id="aboutContent">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h5 class="card-title fw-semibold mb-4">About Us</h5>
+
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                    </div>
+                    <h4 class="card-title mb-4">About Us</h4>
+                    <p>Welcome to our Admin Panel! This platform is designed to help you manage your application
+                        efficiently and effectively. Here, you can customize settings, manage users, and monitor
+                        application performance.</p>
+                    <p>For any assistance, please refer to the documentation or contact support.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit About Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <div class="mb-3">
+                            <label for="aboutText" class="form-label">Home Description</label>
+                            <textarea class="form-control" id="aboutText" rows="6"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="aboutText" class="form-label">Description</label>
+                            <textarea class="form-control" id="aboutText" rows="6"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{>footer}}
